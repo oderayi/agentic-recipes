@@ -2,9 +2,9 @@ import json
 import os
 
 from dotenv import load_dotenv
+from openai import OpenAI
 from rich.console import Console
 from rich.markdown import Markdown
-from openai import OpenAI
 
 load_dotenv(override=True)
 
