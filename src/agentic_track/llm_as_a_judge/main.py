@@ -1,3 +1,7 @@
+# LLM as a Judge using Orchestration Flow
+# Uses multiple LLM providers to answer a challenging question, and then uses another LLM to judge the answers and rank them.
+# Model providers used: OpenAI, Anthropic, Google Gemini, DeepSeek, Groq, Grok, OpenRouter, Ollama
+
 import json
 import os
 
