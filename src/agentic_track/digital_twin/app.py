@@ -3,12 +3,12 @@
 # It shouws how to structure an agentic application by separating the system prompt, tools, and styles into separate files. 
 #
 # Run: cd src/agentic_track/digital_twin && uv run app.py
-from openai import OpenAI
-from context import TWIN_SYSTEM_PROMPT
-from tools import tools, handle_tool_calls
-from styles import CSS, JS, EXAMPLES
-from dotenv import load_dotenv
 import gradio as gr
+from context import TWIN_SYSTEM_PROMPT
+from dotenv import load_dotenv
+from openai import OpenAI
+from styles import CSS, EXAMPLES, JS
+from tools import handle_tool_calls, tools
 
 load_dotenv(override=True)
 
