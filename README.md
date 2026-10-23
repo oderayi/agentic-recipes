@@ -21,6 +21,8 @@ uv sync # install dependencies.
 uv python list # show all installed python binaries.  
 uv add xxx # add a dependency.  
 uv run script.py # run a python script, activating venv if needed. also runs "uv sync" in the background
+uv run python -m app.module.hello # to add repo root to sys.path and fix local import issues
+
 ```
 
 Day 2
@@ -82,9 +84,10 @@ __Anthropic distinguish two types:__
 - OpenAI: GPT nano, GPT mini, GPT
 - Anthropic: Clause Haiku, Claude Sonnet, Claude Opus 
 - Google: Gemini Flash Lite, Gemini Flash, Gemini Pro
-- DeepSeek AI: DeepSeek V4
-**Others:**
-- Groq: cloud LLM provider of pen-source LLMs (really fast, has nothing to do with Grok of Elon Musk)
+- DeepSeek AI: DeepSeek V4. 
+
+**Others:** 
+- Groq: cloud LLM provider of open-source LLMs (really fast, has nothing to do with Grok of Elon Musk)
 - Grok: X AI's model
 - Ollama: local open-source models
 - OpenRouter
@@ -105,4 +108,49 @@ Develop LLM-as-a-judge recipe (See [src/agentic-track/llm_as_a_judge](src/agenti
 Day 4
 ===
 
+**The Agent Landscape**
 
+Differennt types of offering related to AI agents:
+
+1. Builders (non-technical people can build AI Agents) e.g n8n, ElevenLabs, OpenAI Agent Builder, CrewAI Studio
+
+2. Products (Non-technical people can use AI Agents) e.g Claude Code, Cowork, OpenClaw, Claude Design
+
+3. Runtimes (Technical people can execute AI Agents) e.g AWS Lambda, AWS Bedrock AgentCore, Claude Managed Agents, Vertex AI Agent Engine
+
+4. Frameworks (Technical people can develop AI Agents) e.g OpenAI Agents SDK, CrewAI, LangGraph/LangChani, Google ADK
+
+**Agent Frameworks**
+
+Helper code that makes it easier to create Agents based on LLM calls.
+What frameworks offer:
+
+- Orchestration - chanining together LLM calls
+- Tool calling - equipping an LLM with abilities, including with MCP
+- Constructing LLM inputs and interpreting outputs - including a technique called "Structured Output"
+
+This allows you to easily code an 'Agent Loop' - an LLM in a loop with tools to achieve a goal.
+
+**Framework categories**
+
+- Lightweight: OpenAI Agents SDK, Google ADK, AWS Strands Agents. 
+- Opinionated (less flexible): CrewAI, LangGraph/LangChain
+- No framework at all
+
+There are many more.
+
+
+"Tools" give LLMs abilities.
+
+The power to carry out actions like query a database or look up stock prices.
+
+Tool Calling - in theory
+
+An LLM equiped with a tool seems magical
+
+It is Software that calls the tools not the LLM.
+
+**Summary**
+Agentic AI involves building a harness around LLMs crafting the inputs and interpreting the outputs, in a loop, so that they can 'use tools' and 'be autonomous'.
+
+Agent Frameworks are helper code that make it faster to implement these techniques, but they're not required.
