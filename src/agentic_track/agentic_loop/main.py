@@ -1,4 +1,6 @@
-# Agentic Loop: This is a digital twin that represents a person on their website. 
+# Agentic Loop Recipe
+# 
+# This is a digital twin that represents a person on their website. 
 # It uses an agentic loop to answer questions about the person's career, background, skills and experience. 
 # If the model calls a tool, we will handle it and then continue the conversation with the model until it stops calling tools.
 # Uses gradio to create a chat interface for the digital twin.
