@@ -12,6 +12,7 @@ dependencies = [
     "gradio>=6.30.0",
     "openai>=3.36.1",
     "pypdf>=6.21.2",
+    "requests>=2.34.2",
     "rich>=15.0.0",
 ]
 

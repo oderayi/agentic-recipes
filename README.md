@@ -154,3 +154,8 @@ It is Software that calls the tools not the LLM.
 Agentic AI involves building a harness around LLMs crafting the inputs and interpreting the outputs, in a loop, so that they can 'use tools' and 'be autonomous'.
 
 Agent Frameworks are helper code that make it faster to implement these techniques, but they're not required.
+
+Day 5
+===
+
+Context Engineering vs Prompt Engineering
