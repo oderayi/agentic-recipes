@@ -1,2 +1,2 @@
 def main():
-    print("Hello from agentic-track!")
+    print("Agentic recipes!")

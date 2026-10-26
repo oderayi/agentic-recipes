@@ -67,7 +67,7 @@ Console().print(Markdown(f"{system_prompt}"))
 
 def record_email_tool(email):
     print(f"Tool called to record an email: {email}")
-    with open("emails.txt", "a", encoding="utf-8") as f:
+    with open("twin/emails.txt", "a", encoding="utf-8") as f:
         f.write(email + "\n")
     return "Email received"
 
