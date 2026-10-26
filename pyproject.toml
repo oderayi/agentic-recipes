@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.scripts]
-agentic-track = "agentic_track:main"
+recipes = "recipes:main"
 
 [build-system]
 requires = ["uv_build>=0.13.4,<0.14.0"]

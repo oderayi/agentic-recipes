@@ -2,7 +2,7 @@
 # This is a Gradio app that allows you to chat with your AI twin about your career. It uses the OpenAI API to generate responses based on the conversation history and a system prompt.
 # It shouws how to structure an agentic application by separating the system prompt, tools, and styles into separate files. 
 #
-# Run: cd src/agentic_track/digital_twin && uv run app.py
+# Run: cd src/recipes/digital_twin && uv run app.py
 import gradio as gr
 from context import TWIN_SYSTEM_PROMPT
 from dotenv import load_dotenv
