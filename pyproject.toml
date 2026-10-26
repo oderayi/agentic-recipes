@@ -1,7 +1,7 @@
 [project]
-name = "agentic-track"
+name = "agentic-recipes"
 version = "0.1.0"
-description = "Agentic AI projects by Steven Oderayi"
+description = "Agentic AI recipes by Steven Oderayi"
 readme = "README.md"
 authors = [
     { name = "Steven Oderayi", email = "oderayi@gmail.com" }
