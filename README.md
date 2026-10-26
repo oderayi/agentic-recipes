@@ -103,7 +103,7 @@ ollama rm xxx
 
 Day 3
 ===
-Develop LLM-as-a-judge recipe (See [src/agentic-track/llm_as_a_judge](src/agentic-track/llm_as_a_judge)).
+Develop LLM-as-a-judge recipe (See [src/recipes/01_llm_as_a_judge](src/recipes/01_llm_as_a_judge)).
 
 Day 4
 ===
