@@ -2,12 +2,12 @@ Oct 21, 2026
 
 # Agentic AI Learning Notes and Recipes
 
-Day 1
-===
+# Day 1
 
 - Create agents with n8n
 
 **Favourite Projects by popular votes:**
+
 - Project 5: Engineering Team (with CrewAI)
 - Project 6: Sidekick (with LangGraph)
 - Project 7: Agent Loop
@@ -16,17 +16,17 @@ Day 1
 **Setup:**
 
 ```bash
-uv self update # update uv.  
-uv sync # install dependencies. 
-uv python list # show all installed python binaries.  
-uv add xxx # add a dependency.  
+uv self update # update uv.
+uv sync # install dependencies.
+uv python list # show all installed python binaries.
+uv add xxx # add a dependency.
 uv run script.py # run a python script, activating venv if needed. also runs "uv sync" in the background
 uv run python -m app.module.hello # to add repo root to sys.path and fix local import issues
 
 ```
 
-Day 2
-===
+# Day 2
+
 **3 definitions of an AI Agent:**
 
 Sam Altman: AI systems that can do work for you independently. (Open AI Sam Altman)
@@ -35,12 +35,13 @@ Current view (2026): An LLM with tools in a loop to achieve a goal.
 
 **Agentic Systems:**
 
-__Anthropic distinguish two types:__ 
-  - __Workflows__: are systems where LLMs and tools are orchestrated through predefined code paths.
+**Anthropic distinguish two types:**
 
-  - __Agents__: are dynamic systems where LLMs direct their own processes and tool usage, maintaining control over how they accomplish tasks.
+- **Workflows**: are systems where LLMs and tools are orchestrated through predefined code paths.
 
-  However, they are both Agentic systems.
+- **Agents**: are dynamic systems where LLMs direct their own processes and tool usage, maintaining control over how they accomplish tasks.
+
+However, they are both Agentic systems.
 
 **5 workflow design patterns:**
 
@@ -51,49 +52,59 @@ __Anthropic distinguish two types:__
 5. Evaluator-Optimizer (LLM as a judge): llM output is validated by another
 
 **By contrast, Agents:**
+
 1. Open-ended
 2. Feedback loops
 3. No fixed path
 
 **Risks of Agentic Frameworks:**
+
 1. Unpredictable path
 2. Unpredictable output
 3. Unpredictable costs
 
 **Mitigations for the risks:**
+
 1. Monitor (observability, Evals)
 2. Guardrails: ensure your agents behave safely, consistently, and within your intended boundaries.
 
 **Agentic Traps:**
+
 1. Start from a problem that can be solved. Use agents only if there is a solution to the problem.
-2. Anthropomorphizing (treating an agent like a human): A common red flag: "Agent architecture that assign human -like responsibilities to Agents. 
-  Solution: 
-  - Always start simple (one LLM)
-  - Measure performance against business objective
-  - Add agents because it improves performance
+2. Anthropomorphizing (treating an agent like a human): A common red flag: "Agent architecture that assign human -like responsibilities to Agents.
+   Solution:
+
+- Always start simple (one LLM)
+- Measure performance against business objective
+- Add agents because it improves performance
 
 **Takeaways:**
+
 - Build agent systems to solve problems in a measurable way
 - Decide your agent architecture based on performance
 - LLMs generate plausible outputs, not necessarily accurate outputs. Aligning the outputs with business results? That's your job.
 
 **Confusing Terminology:**
+
 - Agentic Engineer: someone who uses Agents to Engineer OR someone who engineers Agents
 
 **Models (ordered in increasing size left to right):**
-- OpenAI: GPT nano, GPT mini, GPT
-- Anthropic: Clause Haiku, Claude Sonnet, Claude Opus 
-- Google: Gemini Flash Lite, Gemini Flash, Gemini Pro
-- DeepSeek AI: DeepSeek V4. 
 
-**Others:** 
+- OpenAI: GPT nano, GPT mini, GPT
+- Anthropic: Clause Haiku, Claude Sonnet, Claude Opus
+- Google: Gemini Flash Lite, Gemini Flash, Gemini Pro
+- DeepSeek AI: DeepSeek V4.
+
+**Others:**
+
 - Groq: cloud LLM provider of open-source LLMs (really fast, has nothing to do with Grok of Elon Musk)
 - Grok: X AI's model
 - Ollama: local open-source models
 - OpenRouter
 - Artificial Analysis: gives a comparison of the intelligence and costs of models (artificialanalysis.ai)
 
-----
+---
+
 ```bash
 ollama serve
 ollama ls
@@ -101,12 +112,11 @@ ollama pull xxx
 ollama rm xxx
 ```
 
-Day 3
-===
+# Day 3
+
 Develop LLM-as-a-judge recipe (See [src/recipes/01_llm_as_a_judge](src/recipes/01_llm_as_a_judge)).
 
-Day 4
-===
+# Day 4
 
 **The Agent Landscape**
 
@@ -133,12 +143,11 @@ This allows you to easily code an 'Agent Loop' - an LLM in a loop with tools to 
 
 **Framework categories**
 
-- Lightweight: OpenAI Agents SDK, Google ADK, AWS Strands Agents. 
+- Lightweight: OpenAI Agents SDK, Google ADK, AWS Strands Agents.
 - Opinionated (less flexible): CrewAI, LangGraph/LangChain
 - No framework at all
 
 There are many more.
-
 
 "Tools" give LLMs abilities.
 
@@ -155,7 +164,76 @@ Agentic AI involves building a harness around LLMs crafting the inputs and inter
 
 Agent Frameworks are helper code that make it faster to implement these techniques, but they're not required.
 
-Day 5
-===
+# Day 5
 
 Context Engineering vs Prompt Engineering
+
+# Day 6
+
+asyncio: asynchronous python
+
+All the Agent Frameworks use asynchronous python.
+
+The short version:
+
+- All of your methods and functions start with "async". e.g async def fun():
+- Anytime you call them, use "await". e.g x = await fun()
+
+Asyncio provides a lightweight alternative to threading or multiprocessing.
+
+Functions defined with async def are called coroutines - they're special functions that can be paused and resumed.
+Calling a coroutine doesn't execute it immediately - it returns a coroutine object.
+To actually run a coroutine, you must await it, which schedules it for execution within an event loop.
+
+While a coroutine is waiting (e.g for I/O), the event loop can run other coroutines.
+
+Run multiple coroutines at once and gather results in one call:
+
+results = await asyncio.gather(
+do_some_processing(),
+do_other_processing(),
+do_yet_more_processing()
+)
+
+OpenAI Agents SDK
+===
+
+- Lightweight
+- Stays out of the way
+- Makes common activities easy
+- Ed Donnor's favourite
+
+Sidenote: there are some more opinionated features (e.g Handoffs & Guradrails avoided, in that you can implement them yourself)
+
+Recent extensions (e.g Sandboxes and Hosted MCP) feel more heavyweight.
+
+Initial terminology
+---
+- Agents represent a particular LLM with system prompt and tools
+- Agents as Tools and Handoffs for collaboration
+- Guradrails represent controls
+
+Three steps:
+---
+1. Create an instance of Agent
+2. Use "with trace()" to track the agent - observerbaility
+3. Call "Runner.run()" to run one "Application Level Turn". The runner keeps looping until it reaches a stopping point.
+
+With Coding Agents: Be the Boss!!!
+- Invest in your prompts:
+Be precise, ensure current APIs,
+Demand conciseness - no slop!
+- Start SIMPLE.
+- Work incrementally; test constantly; validate success criteria
+- Don't get lazy - challenge & demand evidence
+- Handle frustration with style
+
+
+Any function can be turned into a tool as long as it has parameter type hints and docstring description and @function_tool decorator.
+
+Session (Memory)
+---
+
+
+
+
