@@ -1,4 +1,4 @@
-# Agentic AI Learning Notes and Recipes
+# Agentic AI Recipes Note
 
 # Day 1
 
