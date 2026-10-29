@@ -1,5 +1,3 @@
-Oct 21, 2026
-
 # Agentic AI Learning Notes and Recipes
 
 # Day 1
